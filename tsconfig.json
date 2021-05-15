@@ -29,5 +29,7 @@
   ],
   "include": [
     "**/*.ts",
-    "**/*.tsx", "src/pages/api/hello.js", "src/pages/index.js"]
+    "**/*.tsx", "src/pages/api/hello.js",
+    "src/pages/index"
+  ]
 }
