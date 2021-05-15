@@ -2,7 +2,7 @@ import { Editor } from '@toast-ui/react-editor';
 import chart from '@toast-ui/editor-plugin-chart';
 import uml from '@toast-ui/editor-plugin-uml';
 import React from "react";
-import 'codemirror/lib/codemirror.css';
+// import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
