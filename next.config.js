@@ -1,6 +1,5 @@
 require('dotenv').config();
 // const withTM = require("next-transpile-modules");
-// const withPlugins = require("next-compose-plugins");
 
 const withPlugins = require('next-compose-plugins')
 const sass = require('@zeit/next-sass')

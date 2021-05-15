@@ -1,6 +1,9 @@
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {dark} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import React from "react";
+import ReactMarkdown, {CoreOptions} from "react-markdown";
+import gfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 // @ts-ignore
 const PrismCodeView = ({node, inline, className, children, ...props}) =>{
@@ -16,4 +19,16 @@ const PrismCodeView = ({node, inline, className, children, ...props}) =>{
         <code className={className} {...props} />
     )
 }
-export default PrismCodeView;
+function MarkdownCode({children} : CoreOptions){
+    return(
+        <ReactMarkdown
+            remarkPlugins={[gfm]}
+            rehypePlugins={[rehypeRaw]}
+            // components={PrismCodeView}
+            children={children}
+        />
+    )
+}
+
+export default MarkdownCode;
+

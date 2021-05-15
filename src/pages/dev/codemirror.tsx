@@ -6,11 +6,22 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic';
 const CodeWithCodemirror = dynamic(import('components/Editor/CodeMirror'), {ssr: false})
 
-
-
 export default function Home() {
-    const text = `
-\`
+    // @ts-ignore
+    return (
+        <div>
+            안녕하세요
+            <div>오늘도 코딩을 해보세요</div>
+            <hr />
+            <CodeWithCodemirror value={text} />
+        </div>
+    )
+}
+
+/**
+ *
+ * */
+const text = `
 // 자바스크립트 모드 
 import React, { ReactNode, useEffect, useState, useCallback, useRef  } from 'react'
 import styled, { ThemeProvider } from 'styled-components';
@@ -67,15 +78,5 @@ function Layouts ({title, children} : Props){
         </ThemeProvider>
     )
 }
-export default withCookies(Layouts);
-\`   
-    `
-    return (
-        <div>
-            안녕하세요
-            <div>오늘도 코딩을 해보세요</div>
-            <hr />
-            <CodeWithCodemirror value={text} />
-        </div>
-    )
-}
+export default withCookies(Layouts); 
+`
