@@ -4,6 +4,14 @@ import uml from '@toast-ui/editor-plugin-uml';
 import React from "react";
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
+import {dark} from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import hills from 'highlight.js';
+import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
+import CodeBlock from "components/Editor/CodeBlock";
+// import javascript from 'highlight.js/lib/languages/javascript';
+// hljs.registerLanguage('javascript', javascript);
 
 function TuiEditor() {
     const initiated = `\`\`\` chart
@@ -44,11 +52,10 @@ console.log(3);
         <Editor
             initialValue={initiated}
             previewStyle="vertical"
-            height="600px"
+            height="95vh"
             initialEditType="markdown"
             useCommandShortcut={true}
-            plugins ={[chart,uml]}
-            // plugins ={[chart,uml,colorSyntax,codeSyntaxHighlight.bind(hljs)]}
+            plugins ={[chart,uml,colorSyntax,codeSyntaxHighlight.bind(hills)]}
         />
     );
 }
