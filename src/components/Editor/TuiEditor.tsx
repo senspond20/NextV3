@@ -1,5 +1,10 @@
 import { Editor } from '@toast-ui/react-editor';
+import chart from '@toast-ui/editor-plugin-chart';
+import uml from '@toast-ui/editor-plugin-uml';
+import React from "react";
+import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
+
 function TuiEditor() {
     const initiated = `\`\`\` chart
 ,category1,categoy2
@@ -42,6 +47,7 @@ console.log(3);
             height="600px"
             initialEditType="markdown"
             useCommandShortcut={true}
+            plugins ={[chart,uml]}
             // plugins ={[chart,uml,colorSyntax,codeSyntaxHighlight.bind(hljs)]}
         />
     );
