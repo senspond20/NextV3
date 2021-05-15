@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@toast-ui/react-editor": "^2.5.3",
     "gray-matter": "^4.0.3",
     "next": "10.2.0",
     "next-compose-plugins": "^2.2.1",
