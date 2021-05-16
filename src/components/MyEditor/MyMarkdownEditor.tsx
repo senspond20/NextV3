@@ -1,4 +1,10 @@
-import React, {ReactDOM, RefObject, useEffect, useMemo, useRef, useState} from "react";
+import React, {
+    MutableRefObject,
+    useEffect,
+    useMemo,
+    useRef,
+    useState
+} from "react";
 import marked from 'marked'
 import hljs from 'highlight.js';
 // import 'highlight.js/styles/github.css';
@@ -87,22 +93,32 @@ int main(){
 }
 \`\`\`
 `
+
 function MarkDownEditor(){
     const [input, setInput] = useState<string>(inputttt)
     const [output, setOutput] = useState<string>('');
-    const markdownRef = useRef();
+
+    /**
+     * TypeScript에서 textarea useRef에는 반드시 HTMLTextAreaElement 타입이 정의되어야 한다
+     */
+    const markdownRef = useRef<HTMLTextAreaElement>(null);
+    
     useEffect(()=>{
         markTohtml()
+        console.log(markdownRef)
 
     },[])
     useEffect(()=>{
         // @ts-ignore
-        const current  = markdownRef.current?.value;
+        const current : string = markdownRef.current?.value;
         console.log(current)
         setInput(current);
     },[input]);
 
-    const handleChange = (e : React.ChangeEvent<HTMLInputElement>)=>{
+    /**
+     * @param e : React.ChangeEvent<HTMLTextAreaElement>
+     */
+    const handleChange = (e : React.ChangeEvent<HTMLTextAreaElement>)=>{
         const value =  e.target.value;
         setInput(value);
         // console.log(value)
@@ -138,24 +154,30 @@ function MarkDownEditor(){
 
     return (
         <Container>
-            <div className={'editor-wrapper'}>
-                <h1>Markdown Parser</h1>
-                <FlexWrapper>
-                    <div className={'left-input-mark'}>
-                        <h4>Input - Markdown</h4>
-                        <textarea
-                            defaultValue={input}
-                            onChange={handleChange}
-                            ref={markdownRef}
-                        />
-                    </div>
-                    {/*<button onClick={handleChange}>변환</button>*/}
-                    <div className={'right-output-html'}>
-                        <h4>Output - Html</h4>
-                        <div dangerouslySetInnerHTML ={{__html : output}}></div>
-                    </div>
-                </FlexWrapper>
-            </div>
+            <form method={'post'}>
+                <button type={'submit'}>전송</button>
+                <div className={'editor-wrapper'}>
+                    <h1>Markdown Parser</h1>
+                    <FlexWrapper>
+                        <div className={'left-input-mark'}>
+                            <h4>Input - Markdown</h4>
+
+                            <textarea
+                                name={'origin'}
+                                defaultValue={input}
+                                onChange={handleChange}
+                                ref={markdownRef}
+                            />
+                        </div>
+                        {/*<button onClick={handleChange}>변환</button>*/}
+                        <div className={'right-output-html'}>
+                            <h4>Output - Html</h4>
+                            <div dangerouslySetInnerHTML ={{__html : output}}></div>
+                        </div>
+                    </FlexWrapper>
+                </div>
+            </form>
+
         </Container>
     )
 };
