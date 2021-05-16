@@ -1,5 +1,5 @@
 import React from "react";
-import MyMarkdownEditor from "components/Editor/MyMarkdownEditor";
+import MyMarkdownEditor from "components/MyEditor/MyMarkdownEditor";
 
 const MyEditor = () =>{
     return(

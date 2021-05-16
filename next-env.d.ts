@@ -6,3 +6,4 @@ declare module 'prismjs';
 
 declare module 'react-syntax-highlighter'
 declare module 'react-syntax-highlighter/dist/cjs/styles/prism'
+// declare onchange(DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>')
