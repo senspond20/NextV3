@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ReactMarkdown from "components/Editor/ReactMarkdown";
 import styled from "styled-components";
 import PrismCodeView from "components/Editor/PrismCodeView";
@@ -41,12 +41,22 @@ const rend = (content : string) =>{
 import 'codemirror/theme/ayu-dark.css'
 import dynamic from "next/dynamic";
 const MarkDownDev = () =>{
+    const [html,setHtml] = useState();
 
+    useEffect(()=>{
+        // @ts-ignore
+        return setHtml(()=>{
+            return (
+                <ReactMarkdown children={content}/>
+            )
+        });
+    },[])
+    console.log(html)
     return(
         <Container>
 
-            <CodeWithCodemirror>
-                <ReactMarkdown children={content}/>
+            <CodeWithCodemirror rest={html}>
+                {/*<ReactMarkdown children={content}/>*/}
             </CodeWithCodemirror>
         </Container>
     )
