@@ -9,14 +9,20 @@ import CodeBlock from "components/Editor/CodeBlock";
 // import remarkMath from 'remark-math' 수학
 // import rehypeKatex from 'rehype-katex'
 // renderers={{ code: CodeBlock }}>
-function RenderedMarkdown({children} : CoreOptions){
+type Props ={
+
+    children : CoreOptions
+}
+function RenderedMarkdown({children}: CoreOptions){
     return(
         <ReactMarkdown
             remarkPlugins={[gfm]}
             rehypePlugins={[rehypeRaw]}
-           >
+            // renderers={{ code: CodeBlock }}
+          >
             {children}
         </ReactMarkdown>
     )
 }
+
 export default RenderedMarkdown;

@@ -13,7 +13,7 @@ import {IUnControlledCodeMirror, UnControlled as CodeMirror} from 'react-codemir
 // import 'codemirror/theme/default.css'
 
 // import 'codemirror/theme/base16-dark.css'
-// import 'codemirror/theme/ayu-dark.css'
+import 'codemirror/theme/ayu-dark.css'
 import 'codemirror/theme/monokai.css';
 
 import 'codemirror/keymap/sublime';
@@ -32,14 +32,17 @@ const DEFAULT_JSX_OPTIONS = {
 };
 
 import 'codemirror/mode/javascript/javascript'
-const CodeView = (props: JSX.IntrinsicAttributes & JSX.IntrinsicClassAttributes<CodeMirror> & Readonly<IUnControlledCodeMirror> & Readonly<{ children?: React.ReactNode; }> ) => {
+
+type Props = {
+    value? : string,
+    rest? : IUnControlledCodeMirror
+}
+const CodeView = (props : Props) => {
     return(
         <div>
-            <CodeMirror
-                {...props}
-                value={props.value}
+            <CodeMirror value={props.value}
                 options={{
-                    theme: 'monokai',
+                    theme: 'ayu-dark',
                     mode: 'javascript',
                     tabSize: 3,
                     keyMap: 'sublime',
@@ -48,7 +51,7 @@ const CodeView = (props: JSX.IntrinsicAttributes & JSX.IntrinsicClassAttributes<
                 }}
                 onChange={(editor, data, value) => {
                 }}
-            />
+                {...props.rest}/>
         </div>
     )
 }
