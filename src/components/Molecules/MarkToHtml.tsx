@@ -6,7 +6,8 @@ import marked from "../Atoms/Marked"
  * @returns 
  */
  function markTohtml(input : string) {
-    return marked(input, {sanitize: false});
+     const html = marked(input, {sanitize: false});
+    return (<div dangerouslySetInnerHTML={{__html : html}}></div>)
 }
 
 export default markTohtml;
