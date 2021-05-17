@@ -1,9 +1,21 @@
 import React from "react";
+import { ReactNode } from "react-markdown";
+import styled from "styled-components";
 
+const Wrapper = styled.section`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`;
+
+type Props ={
+    leftChild : ReactNode
+    rightChild : ReactNode
+}
 
 export default function LeftAndRight(){
     return(
-        <div>
+        <Wrapper>
             <article className={''}>
 
 
@@ -12,6 +24,6 @@ export default function LeftAndRight(){
 
 
             </article>
-        </div>
+        </Wrapper>
     )
 }
