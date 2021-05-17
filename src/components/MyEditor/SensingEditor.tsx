@@ -24,39 +24,83 @@ const Container = styled.div`
 export default function SensingEditor(){
 
     const [toggle, setToggle] = useState<boolean>(false);
-    const ToggleRef = useRef<HTMLDivElement>(null);
 
-    const goSubmit=(e: { preventDefault: () => void; } )=>{
-        e.preventDefault();
-        alert('dfd')
-    }
+    const inputRef = useRef<HTMLTextAreaElement>(null);
+    const ToggleRef = useRef<HTMLDivElement>(null);
 
     useEffect(()=>{
         const getCurrent = ToggleRef.current;
         toggle ? getCurrent?.classList.add('output-html-hide')
                :  getCurrent?.classList.remove('output-html-hide');
     },[toggle])
-
+    //
     useEffect(()=>{
         const body = document.querySelector('body');
-        body?.addEventListener('keypress',handleKeyPress);
+        body?.addEventListener('keyup',handleKeyPress);
     },[])
+
 
     /**
      * 키보드 이벤트
      * @param e : KeyboardEvent
      */
-    const handleKeyPress = (e : KeyboardEvent) => {
+    // @ts-ignore
+    const handleKeyPress = (e : KeyboardEvent<HTMLTextAreaElement>) => {
         // if(e.charCode === 13) { //  deprecated
         //   this.handleClick();
         // }
+        // e.cancelBubble = true;
+        // e.preventDefault();
+        // e.stopPropagation();
+        // e.stopImmediatePropagation();
 
-        if (e.key === "Enter") {
-            console.log('엔터')
-        }
+            let vKey = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+            if(e.altKey){
+                switch (vKey){
+                    case 49 : console.log('h1'); // @ts-ignore
+                        // const inner : HTMLTextAreaElement= document.querySelector('.input-markdown');
+
+                        // @ts-ignore
+                        // inner.value = '#';
+                        inputRef.current.value = inputRef.current.value + '\n# '
+                        // inputRef.current?.focus()
+
+                        // console.log(inner?.value);
+
+                        break;
+
+                    case 50 : console.log('h2'); break;
+                    case 51 : console.log('h3'); break;
+                    case 52 : console.log('h4'); break;
+                    case 53 : console.log('h5'); break;
+                    case 54 : console.log('h6'); break;
+                }
+            }
+
+        // if(  result ===74 && e.shiftKey ) {
+        //     alert('you pressed SHIFT+A');
+        // }
+        // if (result === 13) {
+        //     console.log('gg')
+        // }
     };
+
+
+    const goSubmit=(e: { preventDefault: () => void; } )=>{
+        e.preventDefault();
+        alert('dfd')
+    }
     return(
         <Container>
+            <h2>단축키</h2>
+            <ul>
+                <li>Alt + 1 : h1</li>
+                <li>Alt + 2 : h2</li>
+                <li>Alt + 3 : h3</li>
+                <li>Alt + 4 : h4</li>
+                <li>Alt + 5 : h5</li>
+                <li>Alt + 6 : h6</li>
+            </ul>
             {/* form  */}
             <form name="sensingFrm" className="sensingEditor" method={'post'}>
                 <div className="flex-c"><h1>sensingEditor</h1></div>
@@ -70,7 +114,8 @@ export default function SensingEditor(){
                 </div>
                 {/* 에디터 영역 (좌 : markdown , 우 : html ) */}
                 <div className="editor flex-c">
-                    <textarea className="item input-markdown"></textarea>
+                    {/*<textarea className="item input-markdown" onKeyUp={handleKeyPress}></textarea>*/}
+                    <textarea className="item input-markdown" ref={inputRef}></textarea>
                     <div className="item output-html" ref={ToggleRef}></div>
                 </div>
                 <div className={"toggle-wrap"}>
