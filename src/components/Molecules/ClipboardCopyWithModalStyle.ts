@@ -12,17 +12,20 @@ const nonSelect = {
 }
 
 const ModalWrapper = styled.div`
+
   .modal-wrapper {
     background: rgba(0, 0, 0, 0.16);
-    transition: 1s;
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     top: 0;
+    height: 100vh;
     ${nonSelect};
   }
+
   .modal-item {
+    transition: 1s;
     background: #fefdfe;
     border-radius: 10px;
     //margin: 0 auto;
@@ -30,7 +33,8 @@ const ModalWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -80%);
-    box-shadow: 12px 12px 2px 1px rgba(23, 158, 229, 0.4);
+    box-shadow: 12px 12px 2px 1px rgba(18, 71, 190, 0.4);
+    //box-shadow: 12px 12px 2px 1px rgba(23, 158, 229, 0.4);
     //box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
     width: 320px;
     height: 110px;
@@ -38,9 +42,11 @@ const ModalWrapper = styled.div`
     text-align: center;
     display: block;
   }
+
   .modal-btn-area {
     float: right;
   }
+
   .modal-message-area {
     display: flex;
     justify-content: center;

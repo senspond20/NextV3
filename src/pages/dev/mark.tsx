@@ -3,6 +3,11 @@ import CustomMarkRender2 from "components/Molecules/CustomMarkRender2";
 
 
 const CONTENT = `A paragraph with *emphasis* and **strong importance**.
+# h1
+## h2
+### h3
+#### h4
+##### h5
 
 > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
 
@@ -23,6 +28,8 @@ function sum(a,b){
 }
 console.log(5,7);
 ~~~
+
++ 다음 코드입니다
 
 ~~~java
 class Test{
