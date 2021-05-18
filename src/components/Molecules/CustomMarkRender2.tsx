@@ -7,22 +7,78 @@ import styled from "styled-components";
 
 const MarkStyle = styled.div`
   pre,code{
-    margin: 0;padding: 0;
+    //margin: 0 10px;
+    padding: 0 0px 0px 0px;
   }
-  
-  code{
-    //padding-left: 5px;
+  pre{
     //width: fit-content;
   }
-  .hljs-namespace{
+  code{
+    //padding: 0 5px 0 5px;
+    //width: fit-content;
+   
+    //padding : 0 20px;
+    border-radius: 4px;
+  }
+  .hljs-namespace {
     //background: #0055aa;
     //width: fit-content;
-    color : red;
-    padding: 1px 10px;
+    color: red;
+    //padding: 1px 10px;
     margin-bottom: 10px;
     //border-radius: 5px;
     display: block;
-    background: #cccccc;
+    //background: #cccccc;
+  }
+  table{
+   border-collapse: collapse;
+    
+    thead{
+      color: blue;
+      //background: #cccccc;
+      button {
+        float: right;
+      }
+    }
+    tbody:before {
+      content: "-";
+      display: block;
+      line-height: 1em;
+      color: transparent;
+    }
+  }
+    .line-number {
+      //text-align: center;
+      //padding-right: 10px;
+      display: inline-block;
+      ////border-right: 1px solid red;
+      //color: #333;
+      //background: white;
+      //width: 5px;
+      //font-size: 11px;
+      //font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      text-align: center;
+      color: #ccc;
+      border-right: 1px solid #999;
+      vertical-align: top;
+      padding-right: 5px;
+
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+ 
+    }
+
+    /* Technique to disable line numbers from being selected and copied. 
+       Checkout this post for more details http://codepen.io/danoc/pen/ByGKZv */
+    [data-pseudo-content]::before,
+    [data-pseudo-content--before]::before,
+    [data-pseudo-content--after]::after {
+      content: attr(data-pseudo-content);
+    
   }
 `
 function createHighlightedCodeBlock (content : string) {
@@ -39,11 +95,27 @@ function createHighlightedCodeBlock (content : string) {
         langPrefix: "hljs language-",
         highlight: function (code : string, lang: string) {
             const html = hljs.highlightAuto(code).value;
-            language = lang;
-            const ttt = `<div class="hljs-namespace">${lang}</div>${html}`
-            return ttt;
-        }
 
+
+            const  codePattern = /<span class="hljs-comment">(.|\n)*?<\/span>/g
+
+
+            const adaptedHighlightedContent = html.replace(codePattern, data => {
+                return data.replace(/\r?\n/g, () => {
+                    return '\n<span class="hljs-comment">'
+                })
+            })
+                // console.log(adaptedHighlightedContent)
+                //
+            const contentTable = adaptedHighlightedContent.split(/\r?\n/).map((lineContent: string, idx: number) => {
+                return `<tr>
+                      <td class='line-number' data-pseudo-content=${++idx}></td>
+                      <td>${lineContent}</td>
+                    </tr>`
+            }).join('')
+
+                return `<table class='code-table'><thead><tr><th>${lang}</th><th><button>Copy</button></th></tr></thead>${contentTable}</table>`
+            }
     });
 
     const html = marked(content);
