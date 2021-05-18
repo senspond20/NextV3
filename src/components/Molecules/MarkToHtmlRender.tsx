@@ -7,7 +7,7 @@ import styled from "styled-components";
 import 'highlight.js/styles/androidstudio.css'
 
 import doCopy from "components/Atoms/DoCopy";
-import ClipboardCopyWithButton from "components/Molecules/ClipboardCopyWithButton";
+import ClipboardCopyWithButton from "components/Molecules/ClipboardCopyWithModal";
 // import 'highlight.js/styles/lightfair.css'
 const HighlightStyle = styled.div`
   width: fit-content;
