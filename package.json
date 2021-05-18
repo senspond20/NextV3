@@ -16,6 +16,7 @@
     "codemirror": "^5.61.0",
     "easymde": "^2.15.0",
     "gray-matter": "^4.0.3",
+    "highlightjs-line-numbers.js": "^2.8.0",
     "marked": "^2.0.3",
     "next": "10.2.0",
     "next-compose-plugins": "^2.2.1",
