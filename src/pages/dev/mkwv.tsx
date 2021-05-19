@@ -1,5 +1,5 @@
 import React from "react";
-import MarkdownCode from "components/Editor/PrismCodeView";
+import MarkdownCode from "components/PrismCodeView";
 
 const handle = () =>{
 

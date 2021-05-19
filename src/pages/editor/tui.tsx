@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 const TuiEditor = dynamic(
-    () => import('components/Editor/TuiEditor'),
+    () => import('components/TuiEditor'),
     { ssr: false }
 );
 function writePost():JSX.Element {

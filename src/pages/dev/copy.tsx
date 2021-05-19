@@ -1,5 +1,5 @@
 import React from "react";
-import ClipboardCopyWithModal from "components/Molecules/ClipboardCopyWithModal";
+import ClipboardCopyWithModal from "components/ClipboardCopyWithModal";
 
 const TEXT1 = '안녕하세요 반갑습니다';
 const TEXT2 = '안녕하세요 반갑습니다 어서오세요';

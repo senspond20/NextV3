@@ -10,7 +10,7 @@ const SimpleMdeReact = dynamic(import('react-simplemde-editor'), {ssr: false})
 import "easymde/dist/easymde.min.css";
 // import MarkTohtml from "components/Molecules/MarkToHtml";
 
-import ReactMarkdown from "components/Editor/ReactMarkdown";
+import ReactMarkdown from "components/ReactMarkdown";
 // import {KeyMap} from "codemirror";
 
 // const customRendererOptions = useMemo(() => {

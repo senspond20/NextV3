@@ -10,7 +10,7 @@ import {dark} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import hills from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
-import CodeBlock from "components/Atoms/PrismCodeBlock";
+import CodeBlock from "components/PrismCodeBlock";
 // import javascript from 'highlight.js/lib/languages/javascript';
 // hljs.registerLanguage('javascript', javascript);
 

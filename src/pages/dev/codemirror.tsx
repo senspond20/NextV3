@@ -4,7 +4,7 @@ import React from 'react';
 
 import Link from 'next/link'
 import dynamic from 'next/dynamic';
-const CodeWithCodemirror = dynamic(import('components/Editor/CodeMirror'), {ssr: false})
+const CodeWithCodemirror = dynamic(import('components/CodeMirror'), {ssr: false})
 
 export default function Home() {
     // @ts-ignore
