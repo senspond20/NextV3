@@ -1,4 +1,4 @@
-import CodeBlock from "components/Editor/CodeBlock";
+import CodeBlock from "components/Atoms/PrismCodeBlock";
 import React from "react";
 // import {dark} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
