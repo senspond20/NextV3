@@ -8,10 +8,9 @@ const SimpleMdeReact = dynamic(import('react-simplemde-editor'), {ssr: false})
 
 
 import "easymde/dist/easymde.min.css";
-import MarkTohtml from "components/Molecules/MarkToHtml";
+// import MarkTohtml from "components/Molecules/MarkToHtml";
 
 import ReactMarkdown from "components/Editor/ReactMarkdown";
-import MarkToHtmlRender from "components/Molecules/MarkToHtmlRender";
 // import {KeyMap} from "codemirror";
 
 // const customRendererOptions = useMemo(() => {
@@ -58,19 +57,22 @@ export default function UsingOptions(){
             spellChecker: false,
         };
     }, []);
-    const customRendererOptions = useMemo(() => {
-        return {
-            previewRender() {
-               return ReactDOMServer.renderToString(<MarkToHtmlRender input={MARKDOWN_TEXT}/>)
 
-            },
-        } as SimpleMDE.Options;
-    }, []);
+    // const customRendererOptions = useMemo(() => {
+    //     return {
+    //         previewRender() {
+    //            return ReactDOMServer.renderToString(<MarkToHtmlRender input={MARKDOWN_TEXT}/>)
+    //
+    //         },
+    //     } as SimpleMDE.Options;
+    // }, []);
+
+
     return (
         <div>
             {/*<button onClick={customRendererOptions}>클릭</button>*/}
             <SimpleMdeReact
-                options={customRendererOptions}
+                options={autofocusNoSpellcheckerOptions}
                 value={value}
                 onChange={onChange}
             />

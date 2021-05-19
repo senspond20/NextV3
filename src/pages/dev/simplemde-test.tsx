@@ -1,5 +1,5 @@
 import React from "react";
-import SimpleMdeReact from "components/Templates/SimpleMdeReact";
+import SimpleMdeReact from "components/Editor/SimpleMdeReact";
 
 
 export default function handle(){

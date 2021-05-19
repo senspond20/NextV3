@@ -1,5 +1,5 @@
 import React from "react";
-import CustomMarkRender2 from "components/Molecules/CustomMarkRender2";
+import CustomMarkRender2 from "components/Renderer/CustomMarkRender";
 
 
 const CONTENT = `A paragraph with *emphasis* and **strong importance**.
