@@ -1,17 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from "next/link";
+import {Layout} from "components/Templates";
 
 export default function Home() {
-  return (
-    <div>
-      안녕
-        <nav>
-            <Link href={'/editor/tui'}><a>에디터</a></Link>
-            <Link href={'/dev/codemirror'}><a>코드미러</a></Link>
-            <Link href={'/dev/markdown'}><a>마크다운</a></Link>
-        </nav>
-
-    </div>
-  )
+    return (
+        <Layout title={'Home'}>
+            안녕하세요
+            <div>오늘도 코딩을 해보세요</div>
+        </Layout>
+    )
 }

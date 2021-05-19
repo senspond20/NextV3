@@ -6,8 +6,8 @@ import hljs from "highlight.js";
 import "highlight.js/styles/gruvbox-dark.css"
 import mark from "../../pages/dev/mark";
 import styled from "styled-components";
-import ClipboardCopyWithModal from  './ClipboardCopyWithModal'
-import {ModalWrapper,CloseIcon,ClickWrapper,ClickIcon} from "./ClipboardCopyWithModalStyle"
+import ClipboardCopyWithModal from '../Modal/ClipboardCopyWithModal'
+import {ModalWrapper,CloseIcon,ClickWrapper,ClickIcon} from "../Modal/ClipboardCopyWithModalStyle"
 import React, {useCallback, useEffect, useState} from "react";
 import ReactDOMServer from 'react-dom/server';
 
