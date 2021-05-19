@@ -3,19 +3,35 @@ import React, { ReactNode, useEffect, useState, useCallback, useRef  } from 'rea
 import styled, { ThemeProvider } from 'styled-components';
 import { useCookies, withCookies } from 'react-cookie';
 import SEO from './SEO';
-import { darkTheme, lightTheme , ThemeType, Global } from 'components/Templates/index';
+import {darkTheme, lightTheme, ThemeType, Global, Common} from 'components/Templates/index';
 import Link from 'next/link';
-
+import MenuItem, {Item} from "components/Atoms/Convenience/MenuItem";
+import MenuList from "components/Atoms/Convenience/MenuList";
+import GotoTop from "components/Atoms/Convenience/GotoTop";
 /**
  * 스타일링 코드
  */
 const Container = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 type Props = {
     children?: ReactNode
     title?: string
 };
+
+const navList : Item[]=
+    [
+        {link:'/', name :'home'},
+        {link:'/blog', name :'blog'},
+        {link:'/service', name :'Service'},
+        {link:'/about', name :'About'},
+        {link:'/admin', name :'Admin'},
+        {link:'/category2', name :'Category'}
+    ];
+
 
 /**
  * 레이아웃
@@ -57,13 +73,11 @@ function Layouts ({title, children} : Props){
         <ThemeProvider theme={themeStyle}>
             <Global/>
             <Container>
-                <SEO title = {title || ''}/>
+                <SEO title = {title}/>
                 <header>
                     <h1>header</h1>
                     <div className={"navigator"}>
-                        <div><Link href='/'><a>Home</a></Link></div>
-                        <div><Link href='/test'><a>Test</a></Link></div>
-                        <div><Link href='/static/list'><a>SSG</a></Link></div>
+                        <MenuList className={"hero-top-nav"} list={navList}/>
                         <div><button onClick={ToggleTheme}>테마스위치</button></div>
                     </div>
                     {/* <input type='text' ref={theme} /> */}
@@ -79,9 +93,25 @@ function Layouts ({title, children} : Props){
                     <h2>Footer</h2>
                 </footer>
             </Container>
+            <GotoTop />
+            {/*<TopBtn onClick={goToTop}>Top</TopBtn>*/}
         </ThemeProvider>
         // </CookiesProvider>
     )
+}
+const TopBtn = styled.div`
+
+  position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: ${Common.palette.BLUE[8]}; color: white; display: flex; justify-content: center; align-items: center; cursor: pointer;
+`;
+const goToTop = () =>{
+    // 바로
+    window.scrollTo(0, 0)
+    // 부드럽게
+    window.scroll({
+        behavior:'smooth',
+        top : 0,
+        left : 0
+    })
 }
 
 

@@ -43,6 +43,15 @@ const deviceSizes = {
     tabletL: "1024px",
 };
 
+const nonSelect = {
+    '-webkit-touch-callout': 'none',
+    '-webkit-user-select': 'none',
+    '-khtml-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+    'user-select': 'none'
+}
+
 const palette ={
     BLUE: ["#e7f5ff", "#d0ebff", "#a5d8ff", "#74c0fc", "#4dabf7", "#339af0", "#228be6", "#1c7ed6", "#1971c2", "#1864ab"],
     CYAN: ["#e3fafc", "#c5f6fa", "#99e9f2", "#66d9e8", "#3bc9db", "#22b8cf", "#15aabf", "#1098ad", "#0c8599", "#0b7285"],
@@ -110,6 +119,7 @@ const fontSizes = {
 const common ={
     flex,
     border,
+    nonSelect,
     fontSizes,
     palette,
     deviceSizes,
